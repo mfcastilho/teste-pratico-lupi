@@ -30,13 +30,11 @@ export class HomePage implements OnInit {
     });
   }
 
+  addOrder(order: Order) {
+    if (!order.customerName) return;
 
-  addOrder() {
-    if (!this.newOrder.customerName) return;
-
-    this.orderService.addOrder(this.newOrder).then(() => {
+    this.orderService.addOrder(order).then(() => {
       console.log('Pedido adicionado com sucesso!');
-      this.newOrder = { customerName: '', description: '', status: 'Novo', createdAt: new Date()};
     });
   }
 
