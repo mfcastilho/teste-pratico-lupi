@@ -16,6 +16,6 @@ import { OrderListComponent } from '../components/order-list/order-list.componen
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, OrderFormComponent, OrderListComponent]
 })
 export class HomePageModule {}
