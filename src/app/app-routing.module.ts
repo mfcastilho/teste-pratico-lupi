@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'order-form',
+    loadChildren: () => import('./order-form/order-form.module').then( m => m.OrderFormPageModule)
+  },
 ];
 
 @NgModule({
