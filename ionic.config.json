@@ -1,0 +1,7 @@
+{
+  "name": "pedido-gerenciamento",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
