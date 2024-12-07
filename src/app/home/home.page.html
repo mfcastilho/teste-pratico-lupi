@@ -1,31 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      <img
-        class="header-logo"
-        src="../../assets/images/Logo-Lupi-removebg-preview.png"
-        alt="Logo"
-      />
+      Gerencimanto de pedidos
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- <form (ngSubmit)="addOrder()" #orderForm="ngForm">
-    <ion-item>
-      <ion-label position="floating">Nome do Cliente</ion-label>
-      <ion-input type="text" [(ngModel)]="newOrder.customerName" name="customerName" required></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Descrição</ion-label>
-      <ion-textarea [(ngModel)]="newOrder.description" name="description"></ion-textarea>
-    </ion-item>
-    <ion-button expand="block" type="submit" [disabled]="orderForm.invalid">
-      Adicionar Pedido
-    </ion-button>
-  </form> -->
-
-  <!-- <app-order-form (orderAdded)="addOrder($event)"></app-order-form> -->
+  <app-order-form (orderAdded)="addOrder($event)"></app-order-form>
 
   <ion-button expand="block" [routerLink]="'/order-form'">
     Cadastrar Novo Pedido
@@ -44,24 +26,15 @@
       >
         <h2 class="column__title">Novo</h2>
 
-        <ion-list>
-          <ion-item *ngIf="newOrders.length === 0" lines="none">
-            <ion-label><em>Nenhum pedido em Novo</em></ion-label>
-          </ion-item>
-          <ion-item *ngFor="let order of newOrders" class="card" [draggable]="true" (dragstart)="onDragStart($event, order)">
-            <ion-label>
-              <p><strong>Nome do cliente: </strong>{{ order.customerName }}</p>
-              <p><strong>Descrição do pedido: </strong>{{ order.description }}</p>
-              <p><strong>Data/Horário de criação: </strong>{{ formatDate(order.createdAt) }}</p>
-              <ion-button (click)="updateStatus(order, 'Em Andamento')">Mover para Em Andamento</ion-button>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-
-
+        <app-order-list
+          title="Novo"
+          [orders]="newOrders"
+          (statusChange)="updateStatus($event.order, $event.newStatus)"
+          (drop)="onDrop($event.event, 'Novo')"
+        >
+        </app-order-list>
       </ion-col>
 
-      <!-- Coluna: Em Andamento -->
       <ion-col
         size="12"
         size-md="6"
@@ -72,36 +45,15 @@
       >
         <h2 class="column__title">Em Andamento</h2>
 
-        <ion-list>
-          <ion-item *ngIf="inProgressOrders.length === 0" lines="none">
-            <ion-label><em>Nenhum pedido em andamento</em></ion-label>
-          </ion-item>
-          <ion-item
-            *ngFor="let order of inProgressOrders"
-            class="card"
-            [draggable]="true"
-            (dragstart)="onDragStart($event, order)"
-          >
-            <ion-label>
-              <p><strong>Nome do cliente: </strong>{{ order.customerName }}</p>
-              <p>
-                <strong>Descrição do pedido: </strong>{{ order.description }}
-              </p>
-              <p>
-                <strong>Data/Horário de criação: </strong>{{
-                formatDate(order.createdAt) }}
-              </p>
-              <ion-button (click)="updateStatus(order, 'Concluído')"
-                >Mover para Concluído</ion-button
-              >
-            </ion-label>
-          </ion-item>
-        </ion-list>
-
-
+        <app-order-list
+          title="Em Andamento"
+          [orders]="inProgressOrders"
+          (statusChange)="updateStatus($event.order, $event.newStatus)"
+          (drop)="onDrop($event.event, 'Em Andamento')"
+        >
+        </app-order-list>
       </ion-col>
 
-      <!-- Coluna: Concluído -->
       <ion-col
         size="12"
         size-md="6"
@@ -112,31 +64,13 @@
       >
         <h2 class="column__title">Concluído</h2>
 
-        <ion-list>
-          <ion-item *ngIf="completedOrders.length === 0" lines="none">
-            <ion-label><em>Nenhum pedido concluído</em></ion-label>
-          </ion-item>
-          <ion-item
-            *ngFor="let order of completedOrders"
-            class="card"
-            [draggable]="true"
-            (dragstart)="onDragStart($event, order)"
-          >
-            <ion-label>
-              <p><strong>Nome do cliente: </strong>{{ order.customerName }}</p>
-              <p>
-                <strong>Descrição do pedido: </strong>{{ order.description }}
-              </p>
-              <p>
-                <strong>Data/Horário de criação: </strong>{{
-                formatDate(order.createdAt) }}
-              </p>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-
-
-
+        <app-order-list
+          title="Concluído"
+          [orders]="completedOrders"
+          (statusChange)="updateStatus($event.order, $event.newStatus)"
+          (drop)="onDrop($event.event, 'Concluído')"
+        >
+        </app-order-list>
       </ion-col>
     </ion-row>
   </ion-grid>
