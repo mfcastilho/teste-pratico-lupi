@@ -10,15 +10,15 @@
       (dragstart)="onDragStart($event, order)"
       lines="none"
       >
-      <ion-label>
+      <ion-label class="card__container">
         <p><strong>Nome do cliente:</strong> {{ order.customerName }}</p>
         <p><strong>Descrição do pedido:</strong> {{ order.description }}</p>
         <p><strong>Data/Horário de criação:</strong> {{ order.createdAt | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
-        <ng-container *ngIf="title !== 'Concluído'">
-          <ion-button (click)="changeStatus(order, nextStatus(title))">
+        <div class="card__button-container" *ngIf="title !== 'Concluído'">
+          <ion-button class="card__button" (click)="changeStatus(order, nextStatus(title))">
             Mover para {{ nextStatus(title) }}
           </ion-button>
-        </ng-container>
+        </div>
       </ion-label>
     </ion-item>
   </ion-list>

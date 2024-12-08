@@ -18,6 +18,10 @@ ion-button {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -25,7 +29,15 @@ ion-button {
   background-color: #fff;
   padding: 1rem;
   transition: transform 0.2s, box-shadow 0.2s;
-  min-height: 168.3px;
+  min-height: 187px;
+}
+
+.card__button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
 }
 
 .card:hover {

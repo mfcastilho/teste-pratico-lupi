@@ -7,8 +7,8 @@ import { Order } from '../../models/order.model';
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderListComponent {
-  @Input() title!: string; // Título da lista (Novo, Em Andamento, Concluído)
-  @Input() orders: Order[] = []; // Pedidos para exibir na lista
+  @Input() title!: string;
+  @Input() orders: Order[] = [];
   @Output() statusChange = new EventEmitter<{ order: Order; newStatus: string }>();
   @Output() drop = new EventEmitter<{ event: DragEvent; status: string }>();
 
@@ -31,8 +31,6 @@ export class OrderListComponent {
   }
 
   onDragOver(event: DragEvent) {
-    event.preventDefault(); // Permite que o item seja solto
+    event.preventDefault();
   }
-
-
 }
