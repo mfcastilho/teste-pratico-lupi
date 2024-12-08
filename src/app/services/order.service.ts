@@ -10,20 +10,22 @@ import { Timestamp } from 'firebase/firestore';
 export class OrderService {
   constructor(private firestore: AngularFirestore) {}
 
-getOrders() {
-  return this.firestore.collection('orders').snapshotChanges().pipe(
-    map(actions => actions.map(a => {
-      const data = a.payload.doc.data() as Order;
-      const id = a.payload.doc.id;
+  getOrdersByStatus(status: string) {
+    return this.firestore.collection('orders', ref =>
+      ref.where('status', '==', status).orderBy('createdAt')
+    ).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Order;
+        const id = a.payload.doc.id;
 
-      if (data.createdAt instanceof Timestamp) {
-        data.createdAt = data.createdAt.toDate();
-      }
+        if (data.createdAt instanceof Timestamp) {
+          data.createdAt = data.createdAt.toDate();
+        }
 
-      return { id, ...data };
-    }))
-  );
-}
+        return { id, ...data };
+      }))
+    );
+  }
 
   addOrder(order: Order) {
     const newOrder = {
