@@ -35,6 +35,8 @@ export class HomePage implements OnInit {
 
     this.orderService.addOrder(order).then(() => {
       console.log('Pedido adicionado com sucesso!');
+    }).catch(err => {
+      console.error('Erro ao adicionar pedido:', err);
     });
   }
 
@@ -67,23 +69,20 @@ export class HomePage implements OnInit {
   }
 
   onDragStart(event: DragEvent, order: any) {
-    // Armazena o pedido que está sendo arrastado
     event.dataTransfer?.setData('order', JSON.stringify(order));
   }
 
   onDragOver(event: DragEvent) {
-    event.preventDefault(); // Permite o item ser solto
+    event.preventDefault();
   }
 
   onDrop(event: DragEvent, targetStatus: string) {
-    event.preventDefault(); // Impede o comportamento padrão
+    event.preventDefault();
 
-    // Obtém o pedido que foi arrastado
     const orderData = event.dataTransfer?.getData('order');
     if (orderData) {
       const order = JSON.parse(orderData);
 
-      // Atualiza o status do pedido
       this.updateStatus(order, targetStatus);
     }
   }
