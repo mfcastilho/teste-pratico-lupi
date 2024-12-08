@@ -4,11 +4,31 @@ form {
   border-radius: 10px;
   margin-bottom: 2rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  margin: 0 auto;
+
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 75%;
+  }
+
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
 }
 
-ion-input, ion-textarea {
-  --padding-start: 10px;
+.form-card__title {
+  color: #6B0F6D;
+  font-weight: bold;
 }
+
+.back-button {
+  max-width: 120px;
+  margin: 1.56247rem;
+  margin-top: 5.5rem;
+}
+
 
 ion-button {
   --background: #6B0F6D;
@@ -18,5 +38,8 @@ ion-button {
   --border-radius: 20px;
   color: white;
   font-weight: bold;
-  margin-top: 1rem;
+}
+
+.order-register__button {
+  margin-top: 3rem;
 }
