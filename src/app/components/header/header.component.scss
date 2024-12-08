@@ -1,0 +1,21 @@
+ion-header {
+  --background: #6B0F6D;
+}
+
+ion-grid {
+  padding: 16px;
+}
+
+ion-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.header-logo {
+  max-width: 100%;
+  height: auto;
+  max-height: 50px;
+}
+
