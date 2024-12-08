@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { OrderService } from '../services/order.service';
-import { Order } from '../models/order.model';
+import { OrderService } from '../../services/order.service';
+import { Order } from '../../models/order.model';
 
 @Component({
   selector: 'app-order-form',
@@ -21,7 +21,7 @@ export class OrderFormPage {
   constructor(
     private router: Router,
     private orderService: OrderService
-  ) {}
+  ) { }
 
   addOrder() {
     if (this.newOrder.customerName) {

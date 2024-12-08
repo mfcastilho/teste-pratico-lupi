@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { OrderListComponent } from '../components/order-list/order-list.component';
+import { OrderListComponent } from '../../components/order-list/order-list.component';
 
 
 @NgModule({
@@ -17,4 +17,4 @@ import { OrderListComponent } from '../components/order-list/order-list.componen
   ],
   declarations: [HomePage, OrderListComponent]
 })
-export class HomePageModule {}
+export class HomePageModule { }

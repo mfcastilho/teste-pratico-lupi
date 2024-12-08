@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../services/order.service';
+import { OrderService } from '../../services/order.service';
 import { DatePipe } from '@angular/common';
-import { Order } from '../models/order.model';
+import { Order } from '../../models/order.model';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,7 @@ export class HomePage implements OnInit {
   constructor(
     private orderService: OrderService,
     private datePipe: DatePipe
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.loadOrdersByStatus('Novo');
