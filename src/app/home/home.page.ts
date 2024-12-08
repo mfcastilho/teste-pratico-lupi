@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../services/order.service';
-
 import { DatePipe } from '@angular/common';
 import { Order } from '../models/order.model';
 
@@ -12,12 +11,6 @@ import { Order } from '../models/order.model';
 })
 export class HomePage implements OnInit {
   orders: Order[] = [];
-  newOrder: Order = {
-    customerName: '',
-    description: '',
-    status: 'Novo',
-    createdAt: new Date()
-  };
 
   constructor(
     private orderService: OrderService,
@@ -25,8 +18,20 @@ export class HomePage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.orderService.getOrders().subscribe(data => {
-      this.orders = data;
+    this.loadOrdersByStatus('Novo');
+    this.loadOrdersByStatus('Em Andamento');
+    this.loadOrdersByStatus('Concluído');
+  }
+
+  loadOrdersByStatus(status: string) {
+    this.orderService.getOrdersByStatus(status).subscribe(data => {
+      if (status === 'Novo') {
+        this.newOrders = data;
+      } else if (status === 'Em Andamento') {
+        this.inProgressOrders = data;
+      } else if (status === 'Concluído') {
+        this.completedOrders = data;
+      }
     });
   }
 
@@ -56,17 +61,9 @@ export class HomePage implements OnInit {
     return this.datePipe.transform(date, 'dd/MM/yyyy HH:mm:ss');
   }
 
-  get newOrders(): Order[] {
-    return this.orders.filter(order => order.status === 'Novo');
-  }
-
-  get inProgressOrders(): Order[] {
-    return this.orders.filter(order => order.status === 'Em Andamento');
-  }
-
-  get completedOrders(): Order[] {
-    return this.orders.filter(order => order.status === 'Concluído');
-  }
+  newOrders: Order[] = [];
+  inProgressOrders: Order[] = [];
+  completedOrders: Order[] = [];
 
   onDragStart(event: DragEvent, order: any) {
     event.dataTransfer?.setData('order', JSON.stringify(order));
@@ -86,5 +83,4 @@ export class HomePage implements OnInit {
       this.updateStatus(order, targetStatus);
     }
   }
-
 }

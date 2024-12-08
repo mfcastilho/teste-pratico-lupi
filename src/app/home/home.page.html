@@ -1,77 +1,37 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      <img
-        class="header-logo"
-        src="../../assets/images/Logo-Lupi-removebg-preview.png"
-        alt="Logo"
-      />
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-button expand="block" [routerLink]="'/order-form'">
+  <ion-button class="register-order__button" expand="block" [routerLink]="'/order-form'">
     Cadastrar Novo Pedido
   </ion-button>
 
-
   <ion-grid>
     <ion-row>
-      <ion-col
-        size="12"
-        size-md="6"
-        size-lg="4"
-        class="column"
-        (dragover)="onDragOver($event)"
-        (drop)="onDrop($event, 'Novo')"
-      >
+      <ion-col size="12" size-md="6" size-lg="4" class="column">
         <h2 class="column__title">Novo</h2>
-
         <app-order-list
           title="Novo"
           [orders]="newOrders"
           (statusChange)="updateStatus($event.order, $event.newStatus)"
-          (drop)="onDrop($event.event, 'Novo')"
-        >
+          (drop)="onDrop($event.event, 'Novo')">
         </app-order-list>
       </ion-col>
 
-      <ion-col
-        size="12"
-        size-md="6"
-        size-lg="4"
-        class="column"
-        (dragover)="onDragOver($event)"
-        (drop)="onDrop($event, 'Em Andamento')"
-      >
+      <ion-col size="12" size-md="6" size-lg="4" class="column">
         <h2 class="column__title">Em Andamento</h2>
-
         <app-order-list
           title="Em Andamento"
           [orders]="inProgressOrders"
           (statusChange)="updateStatus($event.order, $event.newStatus)"
-          (drop)="onDrop($event.event, 'Em Andamento')"
-        >
+          (drop)="onDrop($event.event, 'Em Andamento')">
         </app-order-list>
       </ion-col>
 
-      <ion-col
-        size="12"
-        size-md="6"
-        size-lg="4"
-        class="column"
-        (dragover)="onDragOver($event)"
-        (drop)="onDrop($event, 'Concluído')"
-      >
+      <ion-col size="12" size-md="6" size-lg="4" class="column">
         <h2 class="column__title">Concluído</h2>
-
         <app-order-list
           title="Concluído"
           [orders]="completedOrders"
           (statusChange)="updateStatus($event.order, $event.newStatus)"
-          (drop)="onDrop($event.event, 'Concluído')"
-        >
+          (drop)="onDrop($event.event, 'Concluído')">
         </app-order-list>
       </ion-col>
     </ion-row>

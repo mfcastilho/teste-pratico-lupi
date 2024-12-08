@@ -2,6 +2,10 @@ ion-header {
   --background: #6B0F6D;
 }
 
+ion-grid {
+  padding: 16px;
+}
+
 ion-title {
   display: flex;
   justify-content: center;
@@ -31,7 +35,12 @@ ion-button {
   --border-radius: 20px;
   color: white;
   font-weight: bold;
-  margin-top: 1rem;
+}
+
+.register-order__button {
+  max-width: 250px;
+  margin: 1.56247rem;
+  margin-top: 5.5rem;
 }
 
 .column {
