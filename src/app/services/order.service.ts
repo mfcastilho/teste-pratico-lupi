@@ -12,7 +12,7 @@ export class OrderService {
 
   getOrdersByStatus(status: string) {
     return this.firestore.collection('orders', ref =>
-      ref.where('status', '==', status).orderBy('createdAt')
+      ref.where('status', '==', status).orderBy('createdAt', 'desc')
     ).snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Order;
@@ -26,6 +26,7 @@ export class OrderService {
       }))
     );
   }
+
 
   addOrder(order: Order) {
     const newOrder = {
