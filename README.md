@@ -82,6 +82,36 @@ ionic serve
 
 O aplicativo será iniciado e estará disponível em [http://localhost:8100](http://localhost:8100).
 
+## Erro de Índice no Firestore
+
+Se você encontrar o erro relacionado à falta de um índice no Firestore, como o exemplo abaixo:
+
+```bash
+FirebaseError: The query requires an index. You can create it here: https://console.firebase.google.com/v1/r/project/[SEU_PROJETO]/firestore/indexes?create_composite=...
+```
+Isso ocorre porque o Firestore precisa de um índice específico para realizar consultas compostas (como consultas com filtros múltiplos ou ordenação em mais de um campo).
+
+## Como Resolver
+
+1. Leia a mensagem de erro completa: Ela fornecerá um link para criar o índice necessário.
+
+Exemplo de link fornecido pelo erro:
+
+```bash
+https://console.firebase.google.com/v1/r/project/[SEU_PROJETO]/firestore/indexes?create_composite=...
+```
+
+## Como Resolver (continuação)
+
+1. **Clique no link**: O link o redirecionará para a página de índices do Firebase, onde você pode criar o índice necessário.
+
+2. **Criação do índice**: Na página de índices, você verá a opção de criar o índice diretamente. Clique em "Criar Índice" e o Firestore gerenciará a criação do índice automaticamente.
+
+3. **Verifique o código de consulta**: Caso o índice esteja relacionado a uma consulta complexa (por exemplo, usando filtros compostos ou ordenação), certifique-se de que sua consulta está estruturada corretamente e que a criação do índice é a única ação necessária.
+
+Depois que o índice for criado, você poderá realizar consultas complexas no Firestore sem problemas.
+
+
 ## Estrutura Geral do Código
 
 A estrutura do projeto é organizada da seguinte forma:
