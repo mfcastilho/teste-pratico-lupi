@@ -128,7 +128,7 @@ A estrutura do projeto é organizada da seguinte forma:
 Durante o desenvolvimento deste sistema, alguns desafios encontrados foram:
 
 - **Configuração do Firebase**: A integração inicial com o Firebase pode ser um pouco desafiadora, especialmente ao lidar com as credenciais e a configuração do Firestore.
-- **Drag-and-Drop**: Implementar a funcionalidade de arrastar e soltar (drag-and-drop) para alterar o status dos pedidos foi uma parte interessante e que exigiu o uso do Angular CDK (Component Dev Kit).
+- **Drag-and-Drop**: Criar a funcionalidade de arrastar e soltar para atualizar o status dos pedidos foi uma tarefa interessante, exigindo o uso de eventos nativos de drag-and-drop do DOM.
 - **Responsividade**: Garantir que o aplicativo fosse funcional em dispositivos móveis e desktop exigiu ajustes nas classes de layout e no design das telas.
 
 ## Tecnologias Utilizadas
@@ -136,7 +136,6 @@ Durante o desenvolvimento deste sistema, alguns desafios encontrados foram:
 - **Ionic**: Framework para construção de aplicativos móveis e web.
 - **Angular**: Framework para desenvolvimento de aplicativos front-end.
 - **Firestore**: Banco de dados em tempo real do Firebase para persistência de dados.
-- **Angular CDK**: Biblioteca para funcionalidades de arrastar e soltar (drag-and-drop).
 
 ## Considerações Finais
 
