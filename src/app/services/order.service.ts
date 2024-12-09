@@ -31,6 +31,7 @@ export class OrderService {
   addOrder(order: Order) {
     const newOrder = {
       ...order,
+      status: 'Novo',
       createdAt: new Date()
     };
     return this.firestore.collection('orders').add(newOrder);

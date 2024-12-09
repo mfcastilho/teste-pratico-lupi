@@ -40,6 +40,7 @@ export class HomePage implements OnInit {
 
     this.orderService.addOrder(order).then(() => {
       console.log('Pedido adicionado com sucesso!');
+      this.loadOrdersByStatus('Novo');
     }).catch(err => {
       console.error('Erro ao adicionar pedido:', err);
     });
